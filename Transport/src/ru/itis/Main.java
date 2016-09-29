@@ -12,15 +12,17 @@ public class Main {
 
         Transport transports[] = {auto, auto1, sportAuto, sportAuto1, bike, bike1};
         int r = transports[0].getWheelCount();
+        int y=0;
         //for(int i=0; i< transports.length; i++){
         //    Transport currentTransport = transports[i];
         //    currentTransport.go();
         //}
-        for(int i=0; i<transports.length; i++){
-            if(r> transports[i].getWheelCount()){
+        for(int i=0; i<transports.length; i++) {
+            if (r > transports[i].getWheelCount()) {
                 r = transports[i].getWheelCount();
+                y = i;
             }
         }
-        System.out.println("Min "+r );
+        System.out.println(transports[y].toString());
     }
 }
