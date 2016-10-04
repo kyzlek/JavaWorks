@@ -23,7 +23,6 @@ public class IntegerArrayListTest {
     @Before
     public void setUp() throws Exception {
         int testData[] = {2, 5, 3, 4, 8};
-
         testedList = new IntegerArrayList(testData);
     }
 
@@ -40,5 +39,32 @@ public class IntegerArrayListTest {
     @Test(expected = IllegalArgumentException.class)
     public void testGetOnOnIncorrectData() throws Exception {
         testedList.get(INCORRECT_POSITION);
+    }
+    @Test
+    public void testAddonCorrectData(){
+        int expected = 99;
+        testedList.add(99,2);
+        int actual = testedList.get(2);
+        assertEquals(expected, actual);
+    }
+    @Test
+    public void testDeleteonCorrectData(){
+        int expected = 4;
+        testedList.delete(3);
+        int actual = testedList.get(2);
+        assertEquals(expected, actual);
+    }
+    @Test
+    public void testDeletebyPositiononCorrectData(){
+        int expected = 8;
+        testedList.deleteByPosition(3);
+        int actual = testedList.get(3);
+        assertEquals(expected, actual);
+    }
+    @Test
+    public void testFindonCorrectData(){
+        int expected = 4;
+        int actual = testedList.find(8);
+        assertEquals(expected, actual);
     }
 }

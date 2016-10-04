@@ -1,5 +1,9 @@
 package ru.itis;
 
+import com.sun.org.apache.xpath.internal.SourceTree;
+
+import java.util.ArrayList;
+
 public class IntegerArrayList {
 
     private static final int MAX_SIZE = 10;
@@ -9,9 +13,6 @@ public class IntegerArrayList {
 
     // Количество элементов
     private int count;
-
-    int r;
-    int tempData[];//промежуточный масиив
 
     public IntegerArrayList() {
         this.count = 0;
@@ -50,13 +51,15 @@ public class IntegerArrayList {
      * элемент уже есть
      */
     public void add(int element, int position) {
-        this.tempData = new int[MAX_SIZE-position-1];
-        for(int i=0; i<MAX_SIZE-position; i++){
-            tempData[i]=this.data[position+1];
+        int tempData[] = new int[count-position-1];
+        int locPos = position;
+        for(int i=0; i<count-position-1; i++) {
+            tempData[i] = this.data[locPos];
+            locPos++;
         }
-        if (position < count && count < MAX_SIZE - 1) {
+        if (position < count) {
             int j=0;
-            for(int i=position; i<MAX_SIZE; i++){
+            for(int i=position; i<count-1; i++){
                 this.data[i+1] = tempData[j];
                 j++;
             }
@@ -70,7 +73,15 @@ public class IntegerArrayList {
      * @return true, если удаление прошло успешно, false - если элемент не был найден
      */
     public boolean delete(int element) {
-        
+        int locPos = find(element);
+        if(locPos != -1){
+            if (locPos < count) {
+                for(int i=locPos; i<count-1; i++){
+                    data[i] = data[i+1];
+                }
+                count = count - 1;
+        } else throw new IllegalArgumentException();
+        }else return false;
         return true;
     }
 
@@ -79,7 +90,12 @@ public class IntegerArrayList {
      * @param position индекс, где находится удаляемый элемент
      */
     public void deleteByPosition(int position) {
-
+        if (position < count) {
+            for(int i=position; i<count-1; i++){
+                data[i] = data[i+1];
+            }
+            count = count - 1;
+        } else throw new IllegalArgumentException();
     }
 
     /**
@@ -88,7 +104,8 @@ public class IntegerArrayList {
      * @return индекс, в котором находится элемент. -1 - если элемент не найден
      */
     public int find(int element) {
-        for(int i=0; i<MAX_SIZE; i++){
+
+        for(int i=0; i<count; i++){
             if(element == this.data[i]) {
                 return i;
             }
@@ -106,5 +123,11 @@ public class IntegerArrayList {
             return this.data[position];
         }else throw new IllegalArgumentException();
 
+    }
+    public void outDisplay(){
+        for(int i = 0; i< count; i++){
+            System.out.print(" "+this.data[i]+ " ");
+        }
+        System.out.println("");
     }
 }
