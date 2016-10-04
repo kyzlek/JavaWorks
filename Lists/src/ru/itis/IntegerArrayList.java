@@ -27,7 +27,7 @@ public class IntegerArrayList {
             }
         }else throw new IllegalArgumentException();
     }
-
+    //-0-0-0--
     /**
      * Метод добавление элемента в конец списка
      * @param element элемент, который необходимо добавить
