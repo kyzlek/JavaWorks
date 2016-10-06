@@ -14,9 +14,6 @@ import java.util.List;
  */
 public class SimpleTokenizerImpl implements Tokenizer{
 
-    //    List<Token> arrayTocens = new ArrayList<>();
-//    Token token;
-//    String actualWord;
     private final int WORD = 1;
     private final int PUNCTUATION = 4;
     private final int NUMBER = 2;
@@ -24,9 +21,10 @@ public class SimpleTokenizerImpl implements Tokenizer{
 
 
     @Override
-    public List parse(String text) {
-        List<Token> arrayTokens = new ArrayList<>();
-        Token token = null;//Спроси марселя почуме без инициализации это arrayTokens.add(token); ругается?
+    public ArrayList parse(String text) {
+        ArrayList<Token> arrayTokens = new ArrayList<>();
+        //Спроси марселя почуме без инициализации метод arrayTokens.add(token); ругается?????????????????????????????????????????7
+        Token token = null;
         String actualWord;
         actualWord = "";
         char[] arraySymbol = text.toCharArray();

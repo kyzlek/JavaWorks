@@ -5,7 +5,8 @@
  */
 package ru.itis;
 
-import java.util.List;
+import java.util.ArrayList;
+
 
 /**
  *
@@ -14,5 +15,5 @@ import java.util.List;
 public interface Tokenizer {
     //Метод ананлиза текста
     //Возвращает массив токенов
-    List parse(String text);
+    ArrayList parse(String text);
 }
